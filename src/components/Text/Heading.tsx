@@ -2,7 +2,6 @@
 import React from "react";
 
 interface HeadingProps {
-	text: string;
 	bgColor?: string;
 	padding?: [number, number, number, number];
 	margin?: [number, number, number, number];
@@ -13,6 +12,7 @@ interface HeadingProps {
 	textAlign?: "left" | "right" | "center" | "justify" | "start" | "end";
 	color?: string;
 	className?: string;
+	children: React.ReactNode;
 }
 
 const createHeadingComponent = (
@@ -20,7 +20,6 @@ const createHeadingComponent = (
 	defaults: Partial<HeadingProps>
 ) => {
 	return ({
-		text,
 		padding = defaults.padding || [0, 0, 0, 0],
 		margin = defaults.margin || [0, 0, 0, 0],
 		fontSize = defaults.fontSize || 16,
@@ -30,6 +29,7 @@ const createHeadingComponent = (
 		textAlign = defaults.textAlign || "start",
 		color = defaults.color || "#000",
 		className,
+		children,
 	}: HeadingProps) => {
 		const paddingStyle = padding.map((value) => `${value}px`).join(" ");
 		const marginStyle = margin.map((value) => `${value}px`).join(" ");
@@ -50,12 +50,12 @@ const createHeadingComponent = (
 					color,
 				},
 			},
-			text
+			children
 		);
 	};
 };
 
-// Individual Heading Components with Defaults
+// Export every heading with default values
 export const H1 = createHeadingComponent("h1", {
 	fontSize: 32,
 	lineHeight: 1.2,

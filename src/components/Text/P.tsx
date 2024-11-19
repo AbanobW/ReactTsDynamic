@@ -2,33 +2,32 @@
 import React from "react";
 
 interface ParagrapheProps {
-	text: string;
 	bgColor?: string;
 	padding?: [number, number, number, number];
 	margin?: [number, number, number, number];
 	fontSize?: number;
-	lineHeight?: number | string; // Allow 'auto' or numeric values
+	lineHeight?: number | string;
 	fontFamily?: string;
 	fontWeight?: number | string;
 	textAlign?: "left" | "right" | "center" | "justify" | "start" | "end";
 	color?: string;
 	className?: string; // Optional custom CSS class
+	children: React.ReactNode;
 }
 
 const P: React.FC<ParagrapheProps> = ({
-	text,
 	padding = [0, 0, 0, 0], // Default padding (top, right, bottom, left)
-	margin = [0, 0, 0, 0], // Default padding (top, right, bottom, left)
+	margin = [0, 0, 0, 0], // Default margin (top, right, bottom, left)
 	fontSize = 16,
-	lineHeight = 24, // Default lineHeight
-	fontFamily = "", // Default font-family
-	fontWeight = 500, // Default font-weight
-	textAlign = "start", // Default text-align
-	color = "#000", // Default text color
+	lineHeight = 24,
+	fontFamily = "",
+	fontWeight = 500,
+	textAlign = "start",
+	color = "#000",
 	className,
+	children,
 }) => {
-
-	// Convert padding and margin array to CSS shorthand
+	// Convert padding and margin array to CSS
 	const paddingStyle = padding.map((value) => `${value}px`).join(" ");
 	const marginStyle = margin.map((value) => `${value}px`).join(" ");
 
@@ -47,7 +46,7 @@ const P: React.FC<ParagrapheProps> = ({
 				color,
 			}}
 		>
-			{text}
+			{children}
 		</p>
 	);
 };

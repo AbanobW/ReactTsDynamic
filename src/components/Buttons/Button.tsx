@@ -10,7 +10,7 @@ interface ButtonProps {
 	borderWidth?: number;
 	borderRadius?: number;
 	onClick?: () => void;
-	className?: string; // Optional custom CSS class
+	className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -25,7 +25,8 @@ const Button: React.FC<ButtonProps> = ({
 	onClick,
 	className,
 }) => {
-	// Convert padding array to CSS shorthand
+
+	// Convert padding array to CSS
 	const paddingStyle = padding.map((value) => `${value}px`).join(" ");
 	const marginStyle = margin.map((value) => `${value}px`).join(" ");
 
