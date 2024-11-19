@@ -6,6 +6,7 @@ import P from "../../components/Text/P";
 import { H1, H2, H3, H4, H5, H6 } from "../../components/Text/Heading";
 import Anchor from "../../components/Inline/Anchor";
 import Input from "../../components/Form/Input";
+import TextArea from "../../components/Form/Textarea";
 
 const Home: React.FC = () => {
 	const [inputValue, setInputValue] = useState("");
@@ -13,17 +14,15 @@ const Home: React.FC = () => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInputValue(e.target.value);
 	};
+	const [textAreaValue, setTextAreaValue] = useState("");
+
+	const handleChangetext = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setTextAreaValue(e.target.value);
+	};
+
 	return (
 		<div className={styles.container}>
 			<Header title="Welcome to My App" />
-
-			<P fontSize={20} textAlign="start" fontWeight={700}>
-				{" "}
-				test sd wq dsad qwds s Lorem ipsum dolor sit amet, consectetur
-				adipisicing elit. Veritatis commodi, voluptatibus voluptates odio enim
-				explicabo eligendi architecto ut excepturi laudantium, praesentium
-				quisquam. Quasi quos pariatur iure perferendis ullam doloribus sequi.
-			</P>
 
 			<Button
 				className="custom-button"
@@ -67,8 +66,27 @@ const Home: React.FC = () => {
 				borderRadius={5}
 				borderColor="#ccc"
 			/>
+
+			<TextArea
+				placeholder="Write your thoughts here..."
+				value={textAreaValue}
+				onChange={handleChangetext}
+				fontSize={18}
+				color="#333"
+				padding={[10, 15, 10, 15]}
+				margin={[10, 0, 10, 0]}
+				borderRadius={5}
+				borderColor="#007bff"
+				rows={6}
+				cols={60}
+			/>
+
+			<P fontSize={20} textAlign="start" fontWeight={600}>
+				Current value: {textAreaValue}
+			</P>
 		</div>
 	);
 };
 
 export default Home;
+
